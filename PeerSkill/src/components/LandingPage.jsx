@@ -81,7 +81,7 @@ export default function LandingPage() {
           </div>
 
           <div className="register-text">
-            New to PeerSkill? <a href="#">Register for free</a>
+            New to PeerSkill? <a href="#">Register Here</a>
           </div>
         </div>
       </section>
