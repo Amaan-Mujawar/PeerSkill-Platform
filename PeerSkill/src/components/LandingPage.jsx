@@ -156,15 +156,21 @@ export default function LandingPage() {
             <p>Active Peer Validators</p>
           </div>
         </div>
-      </section>
-
-      {/* ================= FOOTER ================= */}
-      <footer className="footer">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h2>Get ahead with PeerSkill</h2>
         <p>
           We're serving up trusted insights and anonymous conversations, so
           you'll have the goods you need to succeed.
         </p>
+      </section>
+
+      {/* ================= FOOTER ================= */}
+      <footer className="footer">
+        
       </footer>
     </div>
   );
