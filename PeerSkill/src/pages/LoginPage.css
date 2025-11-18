@@ -1,0 +1,102 @@
+/* ================= LOGIN (LIGHT + DARK) ================= */
+
+:root {
+  --bg: #f3f6ff;
+  --card-bg: #ffffff;
+  --text: #333;
+  --text-light: #666;
+  --border: #c6ceff;
+  --primary: #1A4BFF;
+  --primary-dark: #0A1F62;
+}
+
+[data-theme="dark"] {
+  --bg: #0e1427;
+  --card-bg: #161d34;
+  --text: #e8eaff;
+  --text-light: #cdd3ff;
+  --border: #36406b;
+}
+
+body {
+  background: var(--bg);
+}
+
+/* Center Card */
+.login-container {
+  background: var(--card-bg);
+  padding: 32px;
+  max-width: 420px;
+  margin: 120px auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 50, 0.15);
+  border-top: 4px solid var(--primary);
+  animation: fadeIn 0.35s ease;
+  transition: 0.3s;
+}
+
+.login-container h2 {
+  text-align: center;
+  color: var(--primary-dark);
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* Inputs */
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 15px;
+  transition: 0.25s ease;
+}
+
+.login-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(26, 75, 255, 0.35);
+  outline: none;
+}
+
+/* ================= BUTTON (FIXED) ================= */
+.auth-login-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 80, 0.2);
+}
+
+.auth-login-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.auth-login-btn:active {
+  transform: translateY(0);
+}
+
+/* Message */
+.login-msg {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--primary-dark);
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

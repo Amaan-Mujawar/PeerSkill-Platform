@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { register } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import "./RegisterPage.css";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
 
-  // All UserDTO fields
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -26,6 +26,7 @@ export default function RegisterPage() {
     try {
       await register(form);
       setMsg("Registration successful! Redirecting to login...");
+
       setTimeout(() => {
         navigate("/login?email=" + encodeURIComponent(form.email));
       }, 1000);
@@ -35,42 +36,42 @@ export default function RegisterPage() {
   };
 
   return (
-    <div style={{ padding: 24, maxWidth: 480, margin: "40px auto" }}>
+    <div className="register-container">
       <h2>Create Your Account</h2>
 
       <input
+        className="register-input"
         placeholder="Full Name"
         value={form.name}
         onChange={(e) => updateField("name", e.target.value)}
-        style={{ display: "block", width: "100%", margin: "8px 0" }}
       />
 
       <input
+        className="register-input"
         placeholder="Email Address"
         value={form.email}
         onChange={(e) => updateField("email", e.target.value)}
-        style={{ display: "block", width: "100%", margin: "8px 0" }}
       />
 
       <input
+        className="register-input"
         placeholder="Password"
         type="password"
         value={form.password}
         onChange={(e) => updateField("password", e.target.value)}
-        style={{ display: "block", width: "100%", margin: "8px 0" }}
       />
 
       <input
+        className="register-input"
         placeholder="Phone Number"
         value={form.phoneNumber}
         onChange={(e) => updateField("phoneNumber", e.target.value)}
-        style={{ display: "block", width: "100%", margin: "8px 0" }}
       />
 
       <select
+        className="register-select"
         value={form.gender}
         onChange={(e) => updateField("gender", e.target.value)}
-        style={{ display: "block", width: "100%", margin: "8px 0" }}
       >
         <option value="">Select Gender</option>
         <option value="MALE">Male</option>
@@ -79,35 +80,35 @@ export default function RegisterPage() {
       </select>
 
       <input
+        className="register-input"
         placeholder="City"
         value={form.city}
         onChange={(e) => updateField("city", e.target.value)}
-        style={{ display: "block", width: "100%", margin: "8px 0" }}
       />
 
       <input
+        className="register-input"
         placeholder="State"
         value={form.state}
         onChange={(e) => updateField("state", e.target.value)}
-        style={{ display: "block", width: "100%", margin: "8px 0" }}
       />
 
-      <button
-        onClick={handleRegister}
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginTop: "10px",
-          background: "#007bff",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
+      <button className="register-btn" onClick={handleRegister}>
         Register
       </button>
 
-      <p style={{ color: "green", marginTop: 10 }}>{msg}</p>
+      <p className="register-msg">{msg}</p>
+
+      {/* Already have account? */}
+      <div className="register-bottom-text">
+        Already have an account?{" "}
+        <span
+          className="login-link"
+          onClick={() => navigate("/login")}
+        >
+          Login
+        </span>
+      </div>
     </div>
   );
 }

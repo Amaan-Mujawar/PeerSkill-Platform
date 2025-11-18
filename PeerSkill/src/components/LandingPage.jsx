@@ -25,27 +25,7 @@ export default function LandingPage() {
       {/* ================= HERO ================= */}
       <section className="hero">
         {/* Navbar */}
-        <nav className="navbar">
-          <div className="nav-left">
-            <div className="nav-logo">PeerSkill</div>
-
-            <ul className="nav-menu">
-              <li>Home</li>
-              <li>Community</li>
-              <li>Jobs</li>
-              <li>Companies</li>
-              <li>About Us</li>
-              <li>For Employers</li>
-            </ul>
-          </div>
-
-          <button
-            className="login-btn nav-login-right"
-            onClick={() => goToLogin()}
-          >
-            Login
-          </button>
-        </nav>
+       
 
         {/* Hero Content */}
         <div className="hero-content">
