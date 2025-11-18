@@ -1,7 +1,25 @@
-import React from "react";
+// src/LandingPage.jsx
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+
+  const goToLogin = (prefillEmail) => {
+    if (prefillEmail) {
+      // navigate with query param so login page can pre-fill
+      navigate(`/login?email=${encodeURIComponent(prefillEmail)}`);
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const goToRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <div className="container">
       {/* ================= HERO ================= */}
@@ -21,7 +39,12 @@ export default function LandingPage() {
             </ul>
           </div>
 
-          <button className="login-btn nav-login-right">Login</button>
+          <button
+            className="login-btn nav-login-right"
+            onClick={() => goToLogin()}
+          >
+            Login
+          </button>
         </nav>
 
         {/* Hero Content */}
@@ -34,8 +57,14 @@ export default function LandingPage() {
           </p>
 
           <div className="login-box">
-            {/* Google Button */}
-            <button className="google-btn">
+            {/* Google Button — placeholder */}
+            <button
+              className="google-btn"
+              onClick={() => {
+                // TODO: replace with real OAuth flow later
+                alert("Google OAuth not configured yet");
+              }}
+            >
               <span className="btn-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24">
                   <path
@@ -59,8 +88,14 @@ export default function LandingPage() {
               Continue with Google
             </button>
 
-            {/* Apple Button */}
-            <button className="apple-btn">
+            {/* Apple Button — placeholder */}
+            <button
+              className="apple-btn"
+              onClick={() => {
+                // TODO: replace with real Apple sign-in
+                alert("Apple sign-in not configured yet");
+              }}
+            >
               <span className="btn-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
                   <path d="M16.7 13.2c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-2.9.9-3.7.9-.8 0-2-.8-3.3-.7-1.7.1-3.2 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.1 1.8 2.4 3.1 2.4 1.2 0 1.7-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.3 0 2.2-1.1 3-2.2.9-1.3 1.2-2.5 1.2-2.6-.1-.1-2.3-.9-2.3-3.4z" />
@@ -76,12 +111,35 @@ export default function LandingPage() {
               type="email"
               placeholder="Enter email"
               className="email-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="email-btn">Continue with email</button>
+            <button
+              className="email-btn"
+              onClick={() => {
+                // if email is provided, prefill login
+                if (email && email.trim().length > 0) {
+                  goToLogin(email.trim());
+                } else {
+                  goToLogin();
+                }
+              }}
+            >
+              Continue with email
+            </button>
           </div>
 
           <div className="register-text">
-            New to PeerSkill? <a href="#">Register Here</a>
+            New to PeerSkill?{" "}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                goToRegister();
+              }}
+            >
+              Register Here
+            </a>
           </div>
         </div>
       </section>
@@ -169,9 +227,7 @@ export default function LandingPage() {
       </section>
 
       {/* ================= FOOTER ================= */}
-      <footer className="footer">
-        
-      </footer>
+      <footer className="footer"></footer>
     </div>
   );
 }
