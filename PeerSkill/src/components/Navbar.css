@@ -1,0 +1,67 @@
+:root {
+  --nav-bg: rgba(255, 255, 255, 0.7);
+  --nav-text: #1a1a1a;
+  --nav-border: #d0d7ff;
+  --primary: #1A4BFF;
+}
+
+[data-theme="dark"] {
+  --nav-bg: rgba(20, 25, 40, 0.8);
+  --nav-text: #e4e8ff;
+  --nav-border: #3b476f;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 14px 40px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--nav-border);
+  z-index: 1000;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  margin-left: 40px;
+}
+
+.nav-menu li {
+  cursor: pointer;
+  color: var(--nav-text);
+  font-weight: 500;
+  transition: 0.25s;
+}
+
+.nav-menu li:hover {
+  color: var(--primary);
+}
+
+.nav-login-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.nav-login-btn:hover {
+  background: #0a2fcc;
+}
