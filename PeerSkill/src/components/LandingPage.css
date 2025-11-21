@@ -9,8 +9,8 @@ html, body {
   width: 100%;
   min-height: 100%;
   font-family: 'Poppins', sans-serif;
-  color: #333;
-  background: #f4f6f8;
+  color: #444;
+  background: #f3f6ff; /* very light bluish background */
   scroll-behavior: smooth;
 }
 
@@ -21,6 +21,39 @@ html, body {
   overflow-x: hidden;
   padding: 0 20px;
 }
+/* button login */
+/* Login button inside nav */
+.nav-menu .login-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: #1A4BFF;     /* Sapphire Blue */
+  color: #fff !important;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 3px 10px rgba(0,0,80,0.25);
+}
+
+.nav-menu .login-btn:hover {
+  background: #0A1F62;     /* Royal Blue Dark */
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,60,0.35);
+}
+
+/* google,apple */
+.login-box button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;         /* space between icon and text */
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+}
+
+
 
 /* ================= NAVBAR ================= */
 .navbar {
@@ -30,40 +63,80 @@ html, body {
   width: 100%;
   height: 80px;
   padding: 0 40px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  justify-content: space-between;   /* NEW: allows right item */
+  
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
   z-index: 1000;
 }
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-login-right {
+  margin-left: auto;
+}
+
+
 
 .nav-logo {
   font-size: 28px;
   font-weight: 700;
-  color: #00a96e;
+  color: #0A1F62; /* Royal Blue */
 }
 
 .nav-menu {
   list-style: none;
   display: flex;
   gap: 35px;
+  align-items: center;
+  margin-left: 0 !important; /* ensures left alignment */
 }
+
 
 .nav-menu li {
   cursor: pointer;
   font-weight: 500;
   color: #555;
-  white-space: nowrap;
   transition: 0.3s;
 }
 
 .nav-menu li:hover {
-  color: #00a96e;
+  color: #1A4BFF; /* Sapphire glow */
 }
 
-/* ================= HERO / FULLSCREEN LOGIN ================= */
+.login-btn {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #1A4BFF;        /* Sapphire Blue */
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 80, 0.25);
+  white-space: nowrap;        /* keeps it tidy */
+}
+
+.login-btn:hover {
+  background: #0A1F62;        /* Royal Blue - dark */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 60, 0.35);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0, 0, 60, 0.25);
+}
+
+/* ================= HERO ================= */
 .hero {
   width: 100%;
   min-height: 100vh;
@@ -72,39 +145,42 @@ html, body {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background: linear-gradient(135deg, #f4f6f8, #ffffff);
+  background: radial-gradient(circle at center,
+    #0A1F62 0%,        /* deep royal blue center */
+    #101b40 45%,
+    #0a1027 100%      /* deep dark fade */
+  );
+  padding-top: 80px;
   padding: 0 20px;
-  padding-top: 80px; /* space for fixed navbar */
-  z-index: 0;
 }
 
 .hero-content {
   max-width: 900px;
   margin: 0 auto;
-  z-index: 1;
 }
 
 .hero-content h1 {
   font-size: 56px;
   font-weight: 700;
   margin-bottom: 20px;
-  color: #00a96e;
-  line-height: 1.2;
+  color: #FFFFFF; /* white title on dark royal bg */
+  letter-spacing: 1px;
 }
 
 .hero-content p {
   font-size: 18px;
-  color: #555;
+  color: #dce2ff;
   margin-bottom: 40px;
 }
 
 .link {
-  color: #00a96e;
+  color: #F5C542; /* golden accent */
   cursor: pointer;
+  font-weight: 500;
   text-decoration: underline;
 }
 
-/* Login Box */
+/* ================= LOGIN BOX ================= */
 .login-box {
   display: flex;
   flex-direction: column;
@@ -115,42 +191,67 @@ html, body {
 .login-box button {
   width: 320px;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
   font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-.google-btn { background: #4285f4; color: #fff; }
+.google-btn { background: #bfc2c7; color: #0d0d0d; }
 .apple-btn { background: #000; color: #fff; }
-.email-btn { background: #00a96e; color: #fff; }
+
+.email-btn { 
+  background: #1A4BFF; /* Sapphire Blue */
+  color: #fff;
+}
+.register-text {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;        /* light gray text */
+}
+
+.register-text a {
+  color: #4da3ff;     /* soft sky blue */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
 
 .login-box button:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  opacity: 0.95;
 }
 
-.or { margin: 5px 0; color: #777; font-weight: 500; }
+.or { 
+  margin: 5px 0; 
+  color: #cdd3ff;
+  font-weight: 500;
+}
 
 .email-input {
   padding: 14px;
   width: 320px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #c6ceff;
   font-size: 16px;
   transition: 0.3s;
 }
 
 .email-input:focus {
-  border-color: #00a96e;
+  border-color: #1A4BFF;
+  box-shadow: 0 0 8px rgba(26, 75, 255, 0.4);
   outline: none;
-  box-shadow: 0 0 8px rgba(0, 169, 110, 0.2);
 }
 
-/* ================= ABOUT, HOW, STATS ================= */
+/* ================= SECTIONS ================= */
 .about-section, .how-section, .stats-section {
   width: 100%;
   padding: 100px 20px;
@@ -158,13 +259,13 @@ html, body {
 }
 
 .about-section { background: #fff; }
-.stats-section { background: #f9f9f9; }
+.stats-section { background: #f3f6ff; }
 
 .about-section h2,
 .how-section h2,
 .stats-section h2 {
   font-size: 38px;
-  color: #00a96e;
+  color: #0A1F62; /* Royal Blue */
   margin-bottom: 60px;
 }
 
@@ -175,29 +276,30 @@ html, body {
   gap: 30px;
 }
 
+/* CARDS */
 .feature-card, .step-box, .stat-card {
   background: #fff;
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s;
+  box-shadow: 0 8px 20px rgba(0,0,60,0.08);
+  transition: 0.3s;
   max-width: 300px;
   flex: 1 1 250px;
+  border-top: 4px solid #1A4BFF; /* sapphire edge */
 }
 
 .feature-card:hover, .step-box:hover, .stat-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 28px rgba(0,0,60,0.15);
 }
 
 .feature-card h3, .step-box h4 {
-  color: #00a96e;
-  margin-bottom: 15px;
+  color: #0A1F62;
 }
 
 .step-number {
   display: inline-block;
-  background: #00a96e;
+  background: #1A4BFF;
   color: white;
   font-weight: bold;
   width: 44px;
@@ -209,7 +311,7 @@ html, body {
 }
 
 .stat-card h3 {
-  color: #00a96e;
+  color: #F5C542; /* gold for stats */
   font-size: 32px;
   margin-bottom: 10px;
 }
